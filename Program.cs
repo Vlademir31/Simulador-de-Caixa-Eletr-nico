@@ -3,20 +3,20 @@
 // deve aparecer no menu pelo menos uma vez. O saldo não pode ficar negativo
 // o usuario deve conseguir fazer várias operações até escolher sair.
 
-        double saldo = 10000.0;
+        decimal saldo = 0.0m;
         int opcao = 0;
 
         do
         {
             Console.Clear();
-            Console.WriteLine("--- SIMULADOR DE CAIXA ELETRÔNICO ---");
+            Console.WriteLine("==== Bem Vindo ao Tech Bank! Escolha sua opção ====");
             Console.WriteLine("1. Depositar");
             Console.WriteLine("2. Sacar");
             Console.WriteLine("3. Ver Saldo");
             Console.WriteLine("4. Sair");
             Console.Write("Escolha uma opção: ");
 
-            if (int.TryParse(Console.ReadLine(), out opcao))
+            if (!int.TryParse(Console.ReadLine(), out opcao))
             {
                 opcao = 0;
             }
@@ -25,7 +25,7 @@
             {
                 case 1:
                     Console.Write("Digite o valor do depósito: R$ ");
-                    double deposito = double.Parse(Console.ReadLine());
+                    decimal deposito = decimal.Parse(Console.ReadLine());
                     if (deposito > 0)
                     {
                         saldo += deposito;
@@ -38,8 +38,8 @@
                     break;
 
                 case 2:
-                    Console.Write("Digite o valor do saque: R$ ");
-                    double saque = double.Parse(Console.ReadLine());
+                    Console.WriteLine("Digite o valor do saque: R$ ");
+                    decimal saque = decimal.Parse(Console.ReadLine());
 
                     if (saque > saldo)
                     {
@@ -52,16 +52,16 @@
                     else
                     {
                         saldo -= saque;
-                        Console.WriteLine($"Saque de R$ {saque:F2} realizado com sucesso!");
+                        Console.WriteLine($"Saque de R$ {saque:C2} realizado com sucesso!");
                     }
                     break;
 
                 case 3:
-                    Console.WriteLine($"Seu saldo atual é: R$ {saldo:F2}");
+                    Console.WriteLine($"Seu saldo atual é: R$ {saldo:C2}");
                     break;
 
                 case 4:
-                    Console.WriteLine("Obrigado por usar o Caixa Eletrônico. Até mais!");
+                    Console.WriteLine("Obrigado por usar o Caixa Eletrônico Tech Bank   . Até mais!");
                     break;
 
                 default:
